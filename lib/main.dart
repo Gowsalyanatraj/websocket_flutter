@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 void main() => runApp(MyApp());
@@ -22,7 +21,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _controller = TextEditingController();
   final channel = WebSocketChannel.connect(
-      Uri.parse('wss://tr.atrehealthtech.com/ws-test/125'));
+      Uri.parse(' '));
 
   List<String> _messageHistory = [];
 
@@ -72,6 +71,22 @@ class _MyHomePageState extends State<MyHomePage> {
       channel.sink.add(message);
       _controller.clear();
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    channel.stream.listen((message) {
+      setState(() {
+        if (message is String) {
+          _messageHistory.add('Received: $message');
+        } else if (message is List<int>) {
+          // Convert ASCII codes to string
+          String text = String.fromCharCodes(message);
+          _messageHistory.add('Received: $text');
+        }
+      });
+    });
   }
 
   @override
