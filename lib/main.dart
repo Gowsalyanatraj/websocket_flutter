@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 void main() => runApp(MyApp());
@@ -21,7 +22,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _controller = TextEditingController();
   final channel = WebSocketChannel.connect(
-      Uri.parse(' '));
+      Uri.parse('wss://tr.atrehealthtech.com/ws-test/125'));
 
   List<String> _messageHistory = [];
 
