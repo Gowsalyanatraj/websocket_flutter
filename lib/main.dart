@@ -30,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("WebSocket Demo"),
+        title: Text("WebSocket"),
       ),
       body: Column(
         children: [
