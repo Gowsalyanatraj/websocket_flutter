@@ -22,7 +22,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _controller = TextEditingController();
   final channel = WebSocketChannel.connect(
-      Uri.parse('wss://tr.atrehealthtech.com/ws-test/125'));
+      Uri.parse(' '));
 
   List<String> _messageHistory = [];
 
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Form(
               child: TextFormField(
                 controller: _controller,
-                decoration: InputDecoration(labelText: 'Send a message'),
+                decoration: const InputDecoration(labelText: 'Send a message'),
               ),
             ),
           ),
